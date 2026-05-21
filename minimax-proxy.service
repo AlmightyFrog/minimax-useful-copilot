@@ -1,0 +1,14 @@
+[Unit]
+Description=MiniMax Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/minimax-useful-copilot
+EnvironmentFile=%h/.config/minimax-api-key
+ExecStart=%h/.venv/bin/python minimax_proxy.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

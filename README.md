@@ -34,3 +34,24 @@ curl -X POST http://localhost:3333/anthropic/v1/messages \
   -H "Content-Type: application/json" \
   -d '{"model":"MiniMax-M2.7","max_tokens":10,"messages":[{"role":"user","content":"hi"}]}'
 ```
+
+### Run as service
+Example how to install as systemd user service on startup.
+
+```bash
+sudo mkdir -p /opt/minimax-useful-copilot
+sudo chown -R $USER: /opt/minimax-useful-copilot
+git clone https://github.com/AlmightyFrog/minimax-useful-copilot /opt/minimax-useful-copilot
+cd /opt/minimax-useful-copilot
+
+mkdir -p ~/.config/systemd/user/
+
+echo "MINIMAX_API_KEY=$MINIMAX_API_KEY" > ~/.config/minimax-api-key
+chmod 600 ~/.config/minimax-api-key
+
+cp minimax-proxy.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable minimax-proxy
+
+systemctl --user start minimax-proxy
+```
