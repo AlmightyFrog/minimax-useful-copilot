@@ -1,0 +1,17 @@
+[
+	{
+		"name": "Minimax",
+		"vendor": "customendpoint",
+		"apiKey": "",
+		"apiType": "messages",
+		"models": [
+			{
+				"id": "MiniMax-M2.7",
+				"name": "MiniMax M2.7",
+				"url": "http://localhost:3333/anthropic",
+				"toolCalling": true,
+				"vision": true
+			}
+		]
+	}
+]
