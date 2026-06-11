@@ -9,7 +9,7 @@
 export MINIMAX_API_KEY="your-key-here"
 ```
 
-### Run proxy
+### Run proxy native
 
 ```bash
 # python
@@ -20,6 +20,17 @@ python minimax_proxy.py --verbose
 
 # javascript as fallback if trouble with python
 node minimax_proxy.js
+```
+
+### Run proxy docker
+
+```bash
+# Copy and edit the env file
+cp .env.example .env
+# Edit .env and add your API key
+
+# Run with docker-compose
+docker-compose up -d
 ```
 
 ### Github Copilot in VS Code

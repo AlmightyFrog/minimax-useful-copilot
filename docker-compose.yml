@@ -1,0 +1,10 @@
+services:
+  minimax-proxy:
+    build: .
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
+    environment:
+      - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+    restart: unless-stopped

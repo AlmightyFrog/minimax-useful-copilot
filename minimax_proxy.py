@@ -10,11 +10,13 @@ if not API_KEY:
     raise ValueError("MINIMAX_API_KEY not set!")
 
 parser = argparse.ArgumentParser(description="MiniMax Proxy")
+parser.add_argument("--host", type=str, default="localhost", help="Host to bind to (default: localhost)")
 parser.add_argument("--port", "-p", type=int, default=3333, help="Port to listen on (default: 3333)")
 parser.add_argument("--verbose", "-v", action="store_true", help="Enable verbose logging")
 args = parser.parse_args()
 
 PORT = args.port
+HOST = args.host
 
 app = FastAPI()
 
@@ -55,5 +57,5 @@ async def proxy(full_path: str, request: Request):
 
 if __name__ == "__main__":
     import uvicorn
-    print(f"MiniMax Proxy starting on port {PORT} (FastAPI/uvicorn)...")
-    uvicorn.run(app, host="localhost", port=PORT)
+    print(f"MiniMax Proxy starting on {HOST}:{PORT} (FastAPI/uvicorn)...")
+    uvicorn.run(app, host=HOST, port=PORT)
